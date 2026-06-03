@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>LendOS Core Lending Platform</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar" aria-label="Primary navigation">
+        <div class="brand">
+          <div class="brand-mark">L</div>
+          <div>
+            <strong>LendOS</strong>
+            <span>Core Lending</span>
+          </div>
+        </div>
+        <nav class="nav" id="nav"></nav>
+      </aside>
+
+      <main class="workspace">
+        <header class="topbar">
+          <div>
+            <p class="eyebrow">Unified loan lifecycle</p>
+            <h1 id="pageTitle">Dashboard</h1>
+          </div>
+          <div class="top-actions">
+            <span class="session-badge" id="sessionBadge">Checking session</span>
+            <button class="icon-button" id="seedBtn" title="Reset demo data" aria-label="Reset demo data">
+              <span aria-hidden="true">↻</span>
+            </button>
+            <button class="primary-button" id="newApplicationBtn">
+              <span aria-hidden="true">+</span>
+              New Application
+            </button>
+            <button class="ghost-button" id="logoutBtn">Logout</button>
+          </div>
+        </header>
+
+        <section id="view" class="view" aria-live="polite"></section>
+      </main>
+    </div>
+
+    <dialog id="applicationDialog">
+      <form method="dialog" class="modal-form" id="applicationForm">
+        <div class="modal-head">
+          <div>
+            <p class="eyebrow">Loan origination</p>
+            <h2>New Application</h2>
+          </div>
+          <button class="icon-button" value="cancel" aria-label="Close">×</button>
+        </div>
+
+        <div class="form-grid">
+          <label>
+            Customer name
+            <input name="name" required placeholder="Aarav Mehta" />
+          </label>
+          <label>
+            Mobile
+            <input name="mobile" required placeholder="+91 98765 43210" />
+          </label>
+          <label>
+            Loan product
+            <select name="product" required></select>
+          </label>
+          <label>
+            Amount
+            <input name="amount" type="number" min="10000" step="10000" required placeholder="500000" />
+          </label>
+          <label>
+            Tenure
+            <select name="tenure">
+              <option value="12">12 months</option>
+              <option value="24">24 months</option>
+              <option value="36">36 months</option>
+              <option value="60">60 months</option>
+              <option value="120">120 months</option>
+            </select>
+          </label>
+          <label>
+            Income
+            <input name="income" type="number" min="0" step="1000" required placeholder="85000" />
+          </label>
+          <label class="wide">
+            Purpose
+            <input name="purpose" placeholder="Business expansion, home renovation, vehicle purchase..." />
+          </label>
+        </div>
+
+        <div class="modal-actions">
+          <button class="ghost-button" value="cancel">Cancel</button>
+          <button class="primary-button" value="submit">Create Application</button>
+        </div>
+      </form>
+    </dialog>
+
+    <dialog id="loginDialog">
+      <form method="dialog" class="modal-form" id="loginForm">
+        <div class="modal-head">
+          <div>
+            <p class="eyebrow">Secure access</p>
+            <h2>LendOS Login</h2>
+          </div>
+        </div>
+
+        <div class="form-grid">
+          <label class="wide">
+            Email
+            <input name="email" type="email" required value="admin@lendos.local" />
+          </label>
+          <label class="wide">
+            Password
+            <input name="password" type="password" required value="lendos-admin" />
+          </label>
+        </div>
+
+        <p class="muted" id="loginMessage">For local MVP access, use the default credentials or set ADMIN_EMAIL and ADMIN_PASSWORD before deployment.</p>
+
+        <div class="modal-actions">
+          <button class="primary-button" value="submit">Login</button>
+        </div>
+      </form>
+    </dialog>
+
+    <script src="./app.js"></script>
+  </body>
+</html>
